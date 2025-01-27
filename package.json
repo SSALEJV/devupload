@@ -1,0 +1,42 @@
+{
+  "name": "electronupdate",
+  "version": "1.0.0",
+  "main": "./src/main.js",
+  "build": {
+  "appId": "com.testdev.easy",
+  "productName": "MiElectronApp",
+  "directories": {
+    "output": "dist"
+  },
+  "win": {
+    "target": "nsis"
+  },
+  "mac": {
+    "target": "dmg"
+  },
+  "linux": {
+    "target": "AppImage"
+  },
+  "publish": [
+    {
+      "provider": "github",
+        "owner": "SSALEJV",
+        "repo": "devupload"
+    }
+  ]
+},
+  "scripts": {
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "description": "",
+  "devDependencies": {
+    "electron": "^34.0.1",
+    "electron-builder": "^25.1.8",
+    "electron-updater": "^6.3.9"
+  }
+}
