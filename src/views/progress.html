@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Descarga en progreso</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+      }
+      #progress {
+        width: 80%;
+        height: 30px;
+        border: 1px solid #000;
+        margin: 20px auto;
+      }
+      #progress-bar {
+        height: 100%;
+        width: 0%;
+        background-color: green;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Descargando actualización...</h2>
+    <div id="progress">
+      <div id="progress-bar"></div>
+    </div>
+    <p id="percentage">0%</p>
+    <button onclick="cancelDownload()">Cancelar</button>
+
+    <script>
+      window.electron.onDownloadProgress((percent) => {
+        document.getElementById("progress-bar").style.width = percent + "%";
+        document.getElementById("percentage").innerText =
+          percent.toFixed(2) + "%";
+      });
+
+      function cancelDownload() {
+        window.electron.cancelUpdate();
+        alert("Descarga cancelada");
+      }
+    </script>
+  </body>
+</html>
